@@ -1,5 +1,11 @@
 # MacBook Accordion
 
+<!-- PROJECT-PRESENTATION:START -->
+<a href="https://github.com/minwoo19930301/macbook-accordion"><img src="assets/macbook-accordion-usage.png" alt="MacBook Accordion" width="960"></a>
+
+[![QUICK START](https://img.shields.io/badge/QUICK%20START-374151?style=for-the-badge)](#install) [![SOURCE](https://img.shields.io/badge/SOURCE-444444?style=for-the-badge)](https://github.com/minwoo19930301/macbook-accordion)
+<!-- PROJECT-PRESENTATION:END -->
+
 ![A person holding a MacBook like an accordion while covering the camera area.](assets/macbook-accordion-usage.png)
 
 MacBook Accordion turns the lid angle sensor in newer MacBooks into a tiny
