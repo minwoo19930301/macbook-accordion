@@ -1,92 +1,38 @@
+<p align="center">
+  <a href="https://github.com/minwoo19930301/macbook-accordion/releases/latest/download/MacBookAccordion-0.1.3.dmg"><img src="https://img.shields.io/badge/DOWNLOAD%20DMG-0.1.3-FFCC00?style=for-the-badge&labelColor=111111" alt="Download DMG"></a>
+</p>
+
 # MacBook Accordion
 
-<!-- PROJECT-PRESENTATION:START -->
-<a href="https://github.com/minwoo19930301/macbook-accordion"><img src="assets/macbook-accordion-usage.png" alt="MacBook Accordion" width="960"></a>
+MacBook 화면 각도 센서로 연주하는 작은 아코디언입니다.
 
-[![QUICK START](https://img.shields.io/badge/QUICK%20START-374151?style=for-the-badge)](#install) [![SOURCE](https://img.shields.io/badge/SOURCE-444444?style=for-the-badge)](https://github.com/minwoo19930301/macbook-accordion)
-<!-- PROJECT-PRESENTATION:END -->
+<table>
+  <tr>
+    <td width="70%"><img src="assets/macbook-accordion-usage.png" alt="MacBook 을 아코디언처럼 잡고 연주하는 모습"></td>
+    <td width="30%" align="center"><img src="assets/app-icon.png" alt="앱 아이콘" width="180"></td>
+  </tr>
+</table>
 
-![A person holding a MacBook like an accordion while covering the camera area.](assets/macbook-accordion-usage.png)
+## 설치
 
-MacBook Accordion turns the lid angle sensor in newer MacBooks into a tiny
-accordion-style instrument.
+1. 위 **DOWNLOAD DMG** 를 눌러 받습니다.
+2. DMG 를 열고 `MacBook Accordion.app` 을 `Applications` 로 끌어 놓습니다.
+3. `Applications` 에서 실행합니다. Dock 고정도 여기서 실행한 앱으로 합니다.
 
-Cover the camera area, then open and close the MacBook lid like bellows. The lid
-angle chooses the note, and the ambient light sensor works like the air button:
-covering the camera area alone is silent, and a note only plays when the lid
-crosses into a different note while the sensor is covered.
+서명 안 된 개인 빌드라 처음 열 때 막히면, 앱을 Control-클릭 → `열기` 를 한 번 누르면 됩니다.
 
-This is a personal fork of Sam Gold's original lid angle sensor experiment:
-https://github.com/samhenrigold/LidAngleSensor
+## 연주법
 
-## Install
+1. 카메라 옆 조도 센서를 손가락으로 가립니다.
+2. 가린 채로 화면을 열고 닫습니다. 각도가 바뀌어 다음 음으로 넘어갈 때 소리가 납니다.
+3. 손을 떼면 소리 없이 움직일 수 있습니다.
 
-The easiest install path is the hosted DMG on GitHub Releases:
+카메라 영상이 아니라 조도 값만 읽어서 카메라 권한이 필요 없습니다. 2019년 16인치 MacBook Pro 이후 모델에서 동작합니다. 일부 M1/M2 는 센서 문제가 있습니다.
 
-1. Open the [latest release](https://github.com/minwoo19930301/macbook-accordion/releases/latest).
-2. Download `MacBookAccordion-0.1.2.dmg`.
-3. Open the DMG.
-4. Drag `MacBook Accordion.app` into `Applications`.
-5. Quit any older copy of the app, then launch `MacBook Accordion`.
-
-This is a personal unsigned build. If macOS blocks the first launch, Control-click
-`MacBook Accordion.app`, choose `Open`, then confirm once. After that it should
-open normally.
-
-## How To Play
-
-1. Open `MacBook Accordion`.
-2. Cover the camera area with a finger or tape.
-3. While covering it, grip the keyboard body and display with both hands.
-4. Open and close the lid sideways like an accordion.
-5. Uncover the camera area whenever you want to move silently without playing a
-   note.
-
-There is no Play button. The app is always ready, but covering the camera area
-only arms the next note change. The app reads the ambient light sensor's lux
-value, not camera video, so this works while another app is focused and does not
-need camera or keyboard permissions.
-
-## Features
-
-- Lid angle selects stepped notes.
-- Covering the camera area acts like an air button and does not play by itself.
-- Lid motion adds bellows expression.
-- Detuned reed oscillators and tremolo create the accordion tone.
-- Tone controls adjust cover threshold, air pressure, detune, brightness, bass
-  mix, and tremolo.
-
-## Compatibility
-
-The underlying sensor was introduced with the 2019 16-inch MacBook Pro. Newer
-MacBooks are more likely to work, though some M1/M2 models have known issues in
-the upstream project.
-
-Desktop Macs and older MacBooks without the lid angle sensor cannot play this
-instrument.
-
-## Build From Source
-
-Use this if you want to customize the app.
+## 빌드
 
 ```shell
-git clone https://github.com/minwoo19930301/macbook-accordion.git
-cd macbook-accordion
-open MacBookAccordion.xcodeproj
+./scripts/package_dmg.sh 0.1.3   # dist/MacBookAccordion-0.1.3.dmg
 ```
 
-Then build the `MacBookAccordion` target in Xcode.
-
-You can also create a local universal DMG from the command line:
-
-```shell
-./scripts/package_dmg.sh 0.1.2
-```
-
-The DMG will be written to `dist/MacBookAccordion-0.1.2.dmg`.
-
-This local checkout has also been verified with Swift typechecking:
-
-```shell
-rg --files -g '*.swift' | xargs swiftc -typecheck -swift-version 6 -default-isolation MainActor -target arm64-apple-macosx14.0
-```
+원본 실험: [samhenrigold/LidAngleSensor](https://github.com/samhenrigold/LidAngleSensor)
