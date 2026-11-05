@@ -63,6 +63,10 @@ set_string CFBundleVersion "$VERSION"
 set_string LSMinimumSystemVersion "14.0"
 set_bool NSHighResolutionCapable true
 
+# swiftc does not compile Assets.xcassets, so ship a prebuilt .icns.
+cp "$ROOT_DIR/assets/AppIcon.icns" "$RESOURCES_DIR/AppIcon.icns"
+set_string CFBundleIconFile "AppIcon"
+
 codesign --force --deep --sign - "$APP_PATH"
 
 rm -rf "$DMG_ROOT"
